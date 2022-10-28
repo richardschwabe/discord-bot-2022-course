@@ -43,7 +43,6 @@ def run():
     async def add(ctx, one : int  , two : int ):
         await ctx.send(one + two)
         
-    
     @bot.command()
     async def say3(ctx, what = "WHAT?", why = "WHY?"):
         await ctx.send(what + why)
