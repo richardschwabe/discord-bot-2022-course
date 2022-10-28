@@ -1,7 +1,6 @@
 import discord 
 from discord.ext import commands
 import settings
-from cogs.greetings import Greetings
     
 logger = settings.logging.getLogger("bot")
     
