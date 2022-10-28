@@ -1,3 +1,4 @@
+import random
 import settings
 import discord 
 from discord.ext import commands
@@ -25,7 +26,29 @@ def run():
     async def ping(ctx):
         """ Answers with pong """
         await ctx.send("pong")
+        
+    @bot.command()
+    async def say(ctx, what = "WHAT?"):
+        await ctx.send(what)
+        
+    @bot.command()
+    async def say2(ctx, *what):
+        await ctx.send(" ".join(what))
+        
+    @bot.command()
+    async def choices(ctx, *options):
+        await ctx.send(random.choice(options))
+        
+    @bot.command()
+    async def add(ctx, one : int  , two : int ):
+        await ctx.send(one + two)
+        
     
+    @bot.command()
+    async def say3(ctx, what = "WHAT?", why = "WHY?"):
+        await ctx.send(what + why)
+        
+        
     bot.run(settings.DISCORD_API_SECRET, root_logger=True)
 
 if __name__ == "__main__":
