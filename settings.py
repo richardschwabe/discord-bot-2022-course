@@ -3,7 +3,7 @@ import os
 import logging
 from logging.config import dictConfig
 from dotenv import load_dotenv
-
+import discord
 
 load_dotenv()
 
@@ -13,6 +13,8 @@ BASE_DIR = pathlib.Path(__file__).parent
 
 CMDS_DIR = BASE_DIR / "cmds"
 COGS_DIR = BASE_DIR / "cogs"
+
+GUILDS_ID = discord.Object(id=int(os.getenv("GUILD")))
 
 LOGGING_CONFIG = {
     "version": 1, 
