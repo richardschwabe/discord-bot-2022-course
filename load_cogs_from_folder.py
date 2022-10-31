@@ -15,7 +15,7 @@ def run():
         logger.info(f"User: {bot.user} (ID: {bot.user.id})")
         
         for cog_file in settings.COGS_DIR.glob("*.py"):
-            if cog_file != "__init__.py":
+            if cog_file.name != "__init__.py":
                 await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
         
     @bot.command()
