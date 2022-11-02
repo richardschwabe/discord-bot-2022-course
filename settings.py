@@ -14,6 +14,8 @@ BASE_DIR = pathlib.Path(__file__).parent
 CMDS_DIR = BASE_DIR / "cmds"
 COGS_DIR = BASE_DIR / "cogs"
 
+VIDEOCMDS_DIR = BASE_DIR / "videocmds"
+
 GUILDS_ID = discord.Object(id=int(os.getenv("GUILD")))
 
 LOGGING_CONFIG = {

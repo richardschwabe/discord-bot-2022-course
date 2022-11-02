@@ -1,6 +1,7 @@
 import settings
 import discord 
 from discord.ext import commands
+import utils
     
 logger = settings.logging.getLogger("bot")
     
@@ -32,7 +33,7 @@ def run():
     
     @bot.event 
     async def on_ready():
-        logger.info(f"User: {bot.user} (ID: {bot.user.id})")
+        await utils.load_videocmds(bot)
 
     @bot.command()
     async def button(ctx):
