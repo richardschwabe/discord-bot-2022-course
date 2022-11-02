@@ -1,55 +1,38 @@
+
 import settings
 import discord 
 from discord.ext import commands
 import utils
     
 logger = settings.logging.getLogger("bot")
-    
+
 class SimpleView(discord.ui.View):
     
-    def __init__(self, timeout):
-        super().__init__(timeout=timeout)
-        self.foo = None
-        
-    async def disable_all(self):
-        for item in self.children:
-            item.disabled = True 
-            
-        await self.message.edit(view=self)
-        
-    async def on_timeout(self) -> None:
-        await self.message.channel.send("Timed out!")
-        await self.disable_all()
+    foo : bool = None
     
-    @discord.ui.button(label="Say Hello", 
+    async def disable_all_items(self):
+        for item in self.children:
+            item.disabled = True
+        await self.message.edit(view=self)
+    
+    async def on_timeout(self) -> None:
+        await self.message.channel.send("Timedout")
+        await self.disable_all_items()
+    
+    @discord.ui.button(label="Hello", 
                        style=discord.ButtonStyle.success)
-    async def hello(self, 
-                    interaction:discord.Interaction, 
-                    button: discord.ui.Button):
+    async def hello(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_message("World")
-        self.foo = True 
+        self.foo = True
         self.stop()
-        
         
     @discord.ui.button(label="Cancel", 
-                       style=discord.ButtonStyle.danger)
-    async def cancel(self, 
-                     interaction:discord.Interaction, 
-                     button: discord.ui.Button):
+                       style=discord.ButtonStyle.red)
+    async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_message("Cancelling")
         self.foo = False
         self.stop()
         
-    @discord.ui.button(label="Disabled", 
-                       disabled=True,
-                       style=discord.ButtonStyle.gray)
-    async def disabled(self, 
-                       interaction:discord.Interaction, 
-                       button: discord.ui.Button):
-        await interaction.response.send_message("Cancelling")
-        self.foo = False
-        self.stop()
-
 def run():
     intents = discord.Intents.default()
     intents.message_content = True
@@ -62,28 +45,26 @@ def run():
     
     @bot.command()
     async def button(ctx):
-        view = SimpleView(timeout=5)
-        
-        button = discord.ui.Button(style=discord.ButtonStyle.primary, 
-                                label="Open URL", 
-                                url="https://www.youtube.com/@richardschwabe")
-        
-        view.add_item(button)
+        view = SimpleView(timeout=50)
+        # button = discord.ui.Button(label="Click me")
+        # view.add_item(button)
         
         message = await ctx.send(view=view)
         view.message = message
+        
         await view.wait()
-                
+        await view.disable_all_items()
+        
         if view.foo is None:
-            logger.error("Timedout")
-        elif view.foo:
-            logger.info("Confirmed / Finished")
+            logger.error("Timeout")
+            
+        elif view.foo is True:
+            logger.error("Ok")
+            
         else:
-            logger.info("Cancelling")
+            logger.error("cancel")
         
-        await view.disable_all()
         
-        # await message.delete()
         
     bot.run(settings.DISCORD_API_SECRET, root_logger=True)
 
