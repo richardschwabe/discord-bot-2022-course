@@ -31,6 +31,18 @@ The initial videos cover all necessary elements to create anything you want with
     - Showing Modals with Selects, TextInputs and Buttons
 
 
+# Video Commands
+
+This is not featured in any of the videos, however feel free to explore the videocmds folder. There are 3 commands in there:
+```
+!purge [channelname=current] [limit=100] -> Deletes X number of messages including the purge command message in a channel, default is 100 messages in the current channel you run the command
+
+!debug channelname -> Shows information about a specific channel, useful to get the ID of any channel
+
+!server -> Shows information about the guild, useful to quickly get the Guild ID
+```
+
+
 ## Links
 
 [Richard on youtube](http://www.youtube.com/subscription_center?add_user=UCIJe3dIHGq1lIAxCCwx8eyA)

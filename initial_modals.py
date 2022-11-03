@@ -1,6 +1,6 @@
 import discord 
 from discord.ext import commands
-
+import traceback
 import settings
 import utils
     
@@ -33,8 +33,8 @@ class FeedbackModal(discord.ui.Modal, title="Send us your feedback"):
         await channel.send(embed=embed)
         await interaction.response.send_message(f"Thank you, {self.user.nick}", ephemeral=True)
         
-    async def on_error(self, interaction: discord.Interaction, error):
-        ...
+    async def on_error(self, interaction: discord.Interaction, error : Exception):
+        traceback.print_tb(error.__traceback__)
 
 def run():
     intents = discord.Intents.all()

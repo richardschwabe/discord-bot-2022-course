@@ -7,7 +7,7 @@ import utils
 logger = settings.logging.getLogger("bot")
 
 class SelectView(discord.ui.View):
-    ...    
+     ...
         
 def run():
     intents = discord.Intents.all()
