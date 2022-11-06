@@ -5,7 +5,7 @@ This repository is part of the [Discord.py 2.x](https://discordpy.readthedocs.io
 https://www.youtube.com/playlist?list=PLESMQx4LeD3N0-KKPPDaToZhBsom2E_Ju
 
 # Description
-My updated course: "How to make a discord bot" with discord.py 2.x covers everything you need to know to raise productivity and user activity on your discord server. By following this course you will learn everything you need to creat a successful bot. Resulting in a professional, community driven and feature rich successful discord server. 
+My updated course: "How to make a discord bot" with discord.py 2.x covers everything you need to know to raise productivity and user activity on your discord server. By following this course you will learn everything you need to create a successful bot. Resulting in a professional, community driven and feature rich successful discord server. 
 
 The initial videos cover all necessary elements to create anything you want with discordpy, this includes:
 
