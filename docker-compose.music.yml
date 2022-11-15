@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+  lavalink:
+    image: "fredboat/lavalink:latest"
+    volumes:
+      - ./lavalink/application.yml:/opt/Lavalink/application.yml
+    ports:
+      - "2333:2333"
+
+
