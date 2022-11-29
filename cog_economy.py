@@ -7,7 +7,12 @@ from models.account import Account
 logger = settings.logging.getLogger(__name__)
 
 def run():
-    database.db.create_tables([Account])
+
+    # Check if data table exist, then skip or create
+    data_exist = database.db.table_exists("account")
+    if not data_exist:
+        database.db.create_tables([Account])
+        print("Data table account created")
 
     intents = discord.Intents.all()
 
