@@ -30,6 +30,10 @@ The initial videos cover all necessary elements to create anything you want with
 	- Create Views with Buttons for even better user interactions
     - Showing Modals with Selects, TextInputs and Buttons
 
+# Setup Instructions
+1. Create a ```logs``` folder in the root directory
+2. Create a .env file from a copy of .env.sample
+3. Fill out the .env file with your discord bot token & guild id
 
 # Video Commands
 
