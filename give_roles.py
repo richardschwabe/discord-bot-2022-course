@@ -29,6 +29,9 @@ def run():
     async def add(ctx, member: discord.Member, role: discord.Role ):
         if member and role:
             await member.add_roles(role)
+            desc = f"{member.name} received {role.name} role"
+            embed = discord.Embed(title="New role assigned", description=desc)
+            await ctx.send(embed=embed)
         else:
             await ctx.send("Not found...")
 
