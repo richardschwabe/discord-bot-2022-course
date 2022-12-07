@@ -15,9 +15,9 @@ class PaginationView(discord.ui.View):
         await self.update_message(self.data[:self.sep])
 
     def create_embed(self, data):
-        embed = discord.Embed(title="Example")
+        embed = discord.Embed(title=f"User List Page {self.current_page} / {int(len(self.data) / self.sep) + 1}")
         for item in data:
-            embed.add_field(name=item, value=item, inline=False)
+            embed.add_field(name=item['label'], value=item[''], inline=False)
         return embed
 
     async def update_message(self,data):
@@ -100,7 +100,16 @@ def run():
 
     @bot.command()
     async def paginate(ctx):
-        data = range(1, 15)
+        data = [
+
+        ]
+
+        for i in range(1,15):
+            data.append({
+                "label": "User Event",
+                "item": f"User {i} has been added"
+            })
+
         pagination_view = PaginationView(timeout=None)
         pagination_view.data = data
         await pagination_view.send(ctx)
