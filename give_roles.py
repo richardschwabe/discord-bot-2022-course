@@ -14,10 +14,11 @@ def run():
     async def setup_roles():
         role_names = ['girl', 'boy', 'new', 'oldtime']
         for role_item in role_names:
-            await bot.guilds[0].create_role(
-                name=role_item,
-                hoist=True
-            )
+            if role_item not in [r.name for r in bot.guilds[0].roles]:
+                await bot.guilds[0].create_role(
+                    name=role_item,
+                    hoist=True
+                )
 
     @bot.event
     async def on_ready():
