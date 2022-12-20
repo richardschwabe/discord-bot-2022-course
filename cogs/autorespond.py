@@ -26,12 +26,10 @@ class AutorespondBot(commands.Cog):
         ...
 
     @autorespond.command()
-    async def create(self, ctx, needle: str, answer: str, case: bool):
+    async def create(self, ctx, needle: str, answer: str):
         respond_config = {
             'needle': needle,
-            "message": answer,
-            "casesensitive",
-            "regex": True
+            "message": answer
         }
         self.message_list.append(respond_config)
 
