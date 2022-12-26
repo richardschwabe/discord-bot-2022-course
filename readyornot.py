@@ -34,6 +34,17 @@ class ReadyOrNotView(discord.ui.View):
     initiatior: discord.User = None
     players: int = 0
 
+
+    async def on_timeout(self):
+        """This is added outside the video,
+        it handles any timeouts and disables the buttons
+        make sure to change the timeout in
+        view = ReadyOrNotView(timeout=180)
+        """
+        self.disable_all_buttons()
+        await self.update_message()
+
+
     async def send(self, interaction: discord.Interaction):
         self.joined_users.append(interaction.user.display_name)
         embed = self.create_embed()
@@ -142,7 +153,7 @@ def run():
         app_commands.Choice(name="Other", value="other"),
     ])
     async def play(interaction: discord.Interaction,game : app_commands.Choice[str], players: int = 5 ):
-        view = ReadyOrNotView(timeout=None)
+        view = ReadyOrNotView(timeout=180)
         view.initiatior = interaction.user
         view.game = games_list[game.value]
         view.players = players
