@@ -33,6 +33,7 @@ class ReadyOrNotView(discord.ui.View):
 
     initiatior: discord.User = None
     players: int = 0
+    message : discord.abc.Messageable = None
 
 
     async def on_timeout(self):
@@ -46,6 +47,12 @@ class ReadyOrNotView(discord.ui.View):
 
 
     async def send(self, interaction: discord.Interaction):
+        # This is necessary to make sure, that the lists are empty when the next
+        # /play usage is run!
+        self.joined_users = list()
+        self.declined_users = list()
+        self.tentative_users = list()
+
         self.joined_users.append(interaction.user.display_name)
         embed = self.create_embed()
         await interaction.response.send_message(view=self, embed=embed)
