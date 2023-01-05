@@ -98,6 +98,7 @@ class ReadyOrNotView(discord.ui.View):
     @discord.ui.button(label="Join",
                        style=discord.ButtonStyle.green)
     async def join_button(self, interaction:discord.Interaction, button: discord.ui.Button):
+        self.message = interaction.message
         await interaction.response.defer()
 
         if interaction.user.display_name not in self.joined_users:
@@ -114,7 +115,9 @@ class ReadyOrNotView(discord.ui.View):
     @discord.ui.button(label="Decline",
                        style=discord.ButtonStyle.red)
     async def decline_button(self, interaction:discord.Interaction, button: discord.ui.Button):
+        self.message = interaction.message
         await interaction.response.defer()
+
 
         if interaction.user.display_name not in self.declined_users:
             self.declined_users.append(interaction.user.display_name)
@@ -129,7 +132,9 @@ class ReadyOrNotView(discord.ui.View):
     @discord.ui.button(label="Maybe",
                        style=discord.ButtonStyle.blurple)
     async def tentative_button(self, interaction:discord.Interaction, button: discord.ui.Button):
+        self.message = interaction.message
         await interaction.response.defer()
+
         if interaction.user.display_name not in self.tentative_users:
             self.tentative_users.append(interaction.user.display_name)
         # remove from declined and from joined if inside
@@ -160,7 +165,7 @@ def run():
         app_commands.Choice(name="Other", value="other"),
     ])
     async def play(interaction: discord.Interaction,game : app_commands.Choice[str], players: int = 5 ):
-        view = ReadyOrNotView(timeout=180)
+        view = ReadyOrNotView(timeout=None)
         view.initiatior = interaction.user
         view.game = games_list[game.value]
         view.players = players

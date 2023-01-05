@@ -50,7 +50,7 @@ class PaginationView(discord.ui.View):
     def get_current_page_data(self):
         until_item = self.current_page * self.sep
         from_item = until_item - self.sep
-        if self.current_page == 1:
+        if not self.current_page == 1:
             from_item = 0
             until_item = self.sep
         if self.current_page == int(len(self.data) / self.sep) + 1:
