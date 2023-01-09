@@ -1,8 +1,10 @@
-import settings
+import logging
 import discord
 from discord.ext import commands
 
-logger = settings.logging.getLogger("bot")
+import settings
+
+logger = logging.getLogger(__name__)
 
 
 def run():
@@ -13,7 +15,7 @@ def run():
 
     @bot.event
     async def on_ready():
-        logger.info(f"User: {bot.user} (ID: {bot.user.id})")
+        logging.info(f"User: {bot.user} (ID: {bot.user.id})")
 
     @bot.command()
     async def ping(ctx: commands.Context):

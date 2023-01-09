@@ -5,7 +5,7 @@ This repository is part of the [Discord.py 2.x](https://discordpy.readthedocs.io
 https://www.youtube.com/playlist?list=PLESMQx4LeD3N0-KKPPDaToZhBsom2E_Ju
 
 # Description
-My updated course: "How to make a discord bot" with discord.py 2.x covers everything you need to know to raise productivity and user activity on your discord server. By following this course you will learn everything you need to create a successful bot. Resulting in a professional, community driven and feature rich successful discord server. 
+My updated course: "How to make a discord bot" with discord.py 2.x covers everything you need to know to raise productivity and user activity on your discord server. By following this course you will learn everything you need to create a successful bot. Resulting in a professional, community driven and feature rich successful discord server.
 
 The initial videos cover all necessary elements to create anything you want with discordpy, this includes:
 
@@ -29,6 +29,18 @@ The initial videos cover all necessary elements to create anything you want with
 	- Send rich text embeds with pictures, links and tables
 	- Create Views with Buttons for even better user interactions
     - Showing Modals with Selects, TextInputs and Buttons
+
+# Specific Bots
+
+The course is extended with various examples and guids even for entire bots.
+
+	- Sending Files (Local, From API)
+	- Rank System
+	- Ticket System
+	- Social Media Integrations
+
+If you have suggestions for specific content, make sure you join the discord server.
+[Join Discord](https://discord.gg/6h3xTkrpQT)
 
 # Setup Instructions
 1. Create a ```logs``` folder in the root directory
